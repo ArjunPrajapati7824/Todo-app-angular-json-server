@@ -1,5 +1,11 @@
-<div class="card text-center container col-sm-6 " style="margin-bottom: 100%;">
-  <div class="card-header" style="background-color: black; color: greenyellow;">
+<!-- 
+<div>
+  Todo List simple Mini CRUD project with Using Angular and Json-server-Api 
+  </div>
+<div class="card text-center container col-sm-6 " style="margin-top: 15%;">
+
+
+  <div class="card-header" style="background-color: black; color: greenyellow; width: 750px;">
     Todo List
   </div>
   <div class="card-body">
@@ -9,7 +15,7 @@
     
     <form  #ngformData="ngForm" (ngSubmit)="postData(ngformData.value)">
       <input type="text" [(ngModel)]="inputClear" placeholder="Enter Data" name="todoData" ngModel style="width:500px;"/>&nbsp;&nbsp;
-      <button class="btn btn-primary" style="margin-left:20px;" >Add data</button>
+      <button class="btn btn-primary" style="margin-left:20px;" >Add Todo</button>
     </form>
     
 
@@ -43,4 +49,100 @@
 
   </form>
 
-</div>
+</div> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angular Todo List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    header {
+      background-color: #343a40;
+      padding: 15px;
+      color: white;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+
+    .card {
+      margin-top: 15%;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 style="text-align: start;">Todo List</h1>
+    <img class="img-responsive" src=".//../assets/logo.png">
+    <h4>Simple Mini CRUD project Using Angular and data managed using Json-server-Api </h4>
+    <nav style="text-align: start;">
+      <a routerLink="/">Home</a>
+      <a routerLink="/todos">Todos</a>
+      <a routerLink="/add">Add Todo</a>
+    </nav>
+  </header>
+
+  <div class="card text-center container col-sm-6" style="margin-top: 100px;">
+    <div class="card-header" style="background-color: black; color: greenyellow;">
+      Todo List
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Make Your Todo List</h5>
+      <hr>
+
+      <form #ngformData="ngForm" (ngSubmit)="postData(ngformData.value)">
+        <input type="text" [(ngModel)]="inputClear" placeholder="Enter Data" name="todoData" ngModel
+          style="width:500px;" />&nbsp;&nbsp;
+        <button class="btn btn-primary" style="margin-left:20px;">Add Todo</button>
+      </form>
+
+      <table class="table table-hover" style="margin-top: 10px;">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">ListName</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="color: greenyellow;" *ngFor="let data of todoList">
+            <td>{{data.id}}</td>
+            <td>{{data.todoData}}</td>
+            <td><button class="btn btn-primary" (click)="updategetData(data.id)">Update</button></td>
+            <td><button class="btn btn-danger" (click)="deleteData(data.id)">Remove</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <form *ngIf="updateIdcheck" #ngformData1="ngForm" (ngSubmit)="updateData(ngformData1.value)">
+      <input type="text" [(ngModel)]="tmpData.todoData"  name="todoData" ngModel style="width:500px;" />&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-success" style="margin-bottom: 10px;">Update data</button>
+    </form>
+
+  </div>
+
+  <footer class="text-center" style="margin-top: 50px;">
+    <p>&copy; 2024 Todo List App. All rights reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS and Angular scripts here (ensure proper order) -->
+
+</body>
+
+</html>
+

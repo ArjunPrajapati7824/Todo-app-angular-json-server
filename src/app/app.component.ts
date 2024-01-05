@@ -16,7 +16,7 @@ export class AppComponent {
   }
 
   inputClear=''//used for make empty field after data added
-  
+  updateClear=''
 
   postData(data:any){
 
@@ -25,7 +25,7 @@ export class AppComponent {
     if(val[0]==''){//check user fill form then click on add button or not if form blank then it will return error
       Swal.fire({
         title:"Error",
-        text:"Fill data",
+        text:"Fill data Properly",
         icon:'error'
       })    
     }else{
@@ -67,6 +67,8 @@ export class AppComponent {
             text:"Data successfully Deleted"
           })
           console.warn("data Deleted");
+        this.updateIdcheck=false
+
           this.getData()
         })
       }else
@@ -105,6 +107,10 @@ export class AppComponent {
           icon:'success'
           
         })
+        this.updateClear=''
+        this.updateIdcheck=false
+
+
     this.getData()
 
       })
